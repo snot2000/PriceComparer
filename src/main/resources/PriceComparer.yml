@@ -1,0 +1,22 @@
+
+logging:
+  level:
+    root: DEBUG
+    
+
+
+
+---
+
+spring:
+  profiles: local
+server:
+  port: 80
+ 
+    
+---
+
+spring:
+  profiles: Pruebas
+server:
+  port: 80    
