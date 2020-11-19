@@ -20,13 +20,6 @@ public class apiTienda {
 		logger.trace("LogerTrace");
 		logger.warn("LogerWarn");
 		logger.info("LogerInfo");
-		
-		
-		
-		
-		
-		
-		logger.info("getById");
         return new PortalTienda("IdTienda", "Nombre", "url");
     }
 	
