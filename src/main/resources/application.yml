@@ -2,15 +2,29 @@
 
 logging:
   level:
-    org.springframework.web: ERROR
+    org.springframework.web: TRACE
     com.mallorcatrens.pricecomparer: TRACE
+
+
+
+
+
 
 ---
 
 spring:
   profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/pricecompare?useSSL=false&serverTimezone=UTC
+    driver: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Snotling2
+  hikari:
+    maximum-pool-size: 10
 server:
   port: 80
+
+
 
     
 ---
