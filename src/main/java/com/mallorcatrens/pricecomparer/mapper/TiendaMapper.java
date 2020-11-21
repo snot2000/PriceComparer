@@ -11,10 +11,10 @@ import com.mallorcatrens.pricecomparer.entity.Tienda;
 public interface TiendaMapper {
 
 	
-	@Select("SELECT idtienda as idTienda, nombre as nombre, activo as activo FROM pricecompare.tienda WHERE idtienda = #{id}")
+	@Select("SELECT id_tienda as idTienda, nombre as nombre, activo as activo FROM pricecompare.tienda WHERE idtienda = #{id}")
     Tienda selectOne(int id);
 
-    @Select("SELECT idtienda as idTienda, nombre as nombre, activo as activo FROM pricecompare.tienda")
+    @Select("SELECT id_tienda as idTienda, nombre as nombre, activo as activo FROM pricecompare.tienda")
     List<Tienda> findAll();
     
 	
