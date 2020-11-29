@@ -2,8 +2,8 @@
 
 logging:
   level:
-    org.springframework.web: TRACE
-    com.mallorcatrens.pricecomparer: TRACE
+    org.springframework.web: DEBUG
+    com.mallorcatrens.pricecomparer: DEBUG
 
 
 

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mallorcatrens.pricecomparer.apiTienda;
 import com.mallorcatrens.pricecomparer.service.RastreadorService;
 
 @RestController
@@ -20,7 +19,7 @@ import com.mallorcatrens.pricecomparer.service.RastreadorService;
 public class RastreadorController {
 	
 	
-Logger logger = LoggerFactory.getLogger(apiTienda.class);
+Logger logger = LoggerFactory.getLogger(RastreadorController.class);
 	
 	@Autowired
     private RastreadorService rastreadorService;

@@ -20,10 +20,10 @@ public interface RastreadorMapper {
 	    @Result(property = "activo", column = "activo")
 	})
 	
-	@Select("SELECT id_rastreador as idRastreador, nombre as nombre, clase as clase, activo as activo FROM pricecompare.rastreador WHERE id_rastreador = #{idRastreador}")
+	@Select("SELECT id_rastreador, nombre, clase, activo FROM pricecompare.rastreador WHERE id_rastreador = #{idRastreador}")
     Rastreador selectOne(int idRastreador);
 
-    @Select("SELECT id_rastreador as idRastreador, nombre as nombre, clase as clase, activo as activo FROM pricecompare.rastreador")
+    @Select("SELECT id_rastreador, nombre, clase, activo FROM pricecompare.rastreador")
     List<Rastreador> findAll();
     
     @Insert("INSERT into village(id_rastreador,nombre,clase,activo) VALUES(#{idRastreador}, #{nombre}, #{clase}, #{activo})")

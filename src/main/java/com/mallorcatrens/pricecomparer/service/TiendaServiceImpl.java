@@ -14,7 +14,7 @@ import com.mallorcatrens.pricecomparer.mapper.TiendaMapper;
 @Service
 public class TiendaServiceImpl implements  TiendaService{
 	
-	Logger logger = LoggerFactory.getLogger(apiTienda.class);
+	Logger logger = LoggerFactory.getLogger(TiendaServiceImpl.class);
 	
 	
 	@Autowired
