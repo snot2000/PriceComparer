@@ -86,6 +86,15 @@ public class Portal implements Serializable{
 	public void setIdRastreador(int idRastreador) {
 		this.idRastreador = idRastreador;
 	}
+
+	@Override
+	public String toString() {
+		return "Portal [idPortal=" + idPortal + ", idTienda=" + idTienda + ", urlBase=" + urlBase + ", activo=" + activo
+				+ ", nombre=" + nombre + ", descripcion=" + descripcion + ", idRastreador=" + idRastreador + "]";
+	}
 	
 
+	
+	
+	
 }

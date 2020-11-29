@@ -54,35 +54,51 @@ Logger logger = LoggerFactory.getLogger(SearchController.class);
 	
 	
 	private void actualizaUrlPortal(int idPortal) {
-		logger.debug("Vamos a actualizar los datos del portal " + idPortal);
 		
-		Portal portal = portalService.getPortal(idPortal);
-		
-		logger.debug("Recuperados datos del portal " + portal);
-		
-		Rastreador rastreador = rastreadorService.getRastreador(portal.getIdRastreador());
-		
-		logger.debug("Recuperamos los datos del rastreador " + rastreador);
-		
-		List<UrlProducto> listaProductos = urlProductoService.findByPortal(idPortal);
-		
-		logger.debug("Recuperadas URL " + listaProductos.size());
-		
-		RastreadorInt rastreadorInt = new Roco();
-		
-		
-		for(UrlProducto urlProducto : listaProductos) {
+		try {
+			// Recuperamos los datos del portal
+			logger.debug("Vamos a actualizar los datos del portal " + idPortal);		
+			Portal portal = portalService.getPortal(idPortal);
+			if (portal == null) {
+				new Exception("No se ha recuperado ningun portal de la BBDD");
+			}
+			logger.debug("Recuperados datos del portal " + portal.toString());
 			
-			try {
-				URL url = new URL(urlProducto.getUrl());
-				rastreadorInt.recuperaInformacionProducto(url);
-			}catch(Exception e) {
-				logger.error("URL incorrecta " + urlProducto.getUrl());
+			
+			// Recuperamos los datos del Rastreador y creamos la clase con la interface RastreadorInt
+			Rastreador rastreador = rastreadorService.getRastreador(portal.getIdRastreador());
+			if(rastreador == null) {
+				new Exception("No se ha recuperado ningun rastreador de la BBDD para el portal " + portal.getNombre());
+			}
+			logger.debug("Recuperamos los datos del rastreador " + rastreador.toString());
+			
+			
+			//Recuperamos la clase del rastreador.
+			Class rastreadorClase = Class.forName("com.mallorcatrens.pricecomparer.rastreador." + rastreador.getClase());
+			RastreadorInt rastreadorInt = (RastreadorInt) rastreadorClase.newInstance();
+			
+			// Recupesamos la lista de urls.
+			List<UrlProducto> listaProductos = urlProductoService.findByPortal(idPortal);
+			if (listaProductos == null || listaProductos.size() == 0) {
+				new Exception("No se ha recuperado ninguna url de la BBDD para el portal " + portal.getNombre());
+			}
+			logger.debug("Recuperadas URL " + listaProductos.size());
+			
+			
+			for(UrlProducto urlProducto : listaProductos) {
+				try {
+					URL url = new URL(urlProducto.getUrl());
+					rastreadorInt.recuperaInformacionProducto(url);
+				}catch(Exception e) {
+					logger.error("URL incorrecta " + urlProducto.getUrl());
+				}
 			}
 			
 			
+		}catch(Exception ex) {
+			logger.error("Error al actualizar las URL de un portal.");
+			logger.error(ex.getMessage());
 		}
-		
 		
 		
 		

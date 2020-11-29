@@ -49,6 +49,12 @@ public class Rastreador implements Serializable{
 	public void setActivo(String activo) {
 		this.activo = activo;
 	}
+
+	@Override
+	public String toString() {
+		return "Rastreador [idRastreador=" + idRastreador + ", nombre=" + nombre + ", clase=" + clase + ", activo="
+				+ activo + "]";
+	}
 	
 	
 	
