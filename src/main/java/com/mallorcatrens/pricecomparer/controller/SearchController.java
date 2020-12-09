@@ -87,8 +87,7 @@ Logger logger = LoggerFactory.getLogger(SearchController.class);
 			
 			for(UrlProducto urlProducto : listaProductos) {
 				try {
-					URL url = new URL(urlProducto.getUrl());
-					rastreadorInt.recuperaInformacionProducto(url);
+					rastreadorInt.recuperaInformacionProducto(urlProducto);
 				}catch(Exception e) {
 					logger.error("URL incorrecta " + urlProducto.getUrl());
 				}
